@@ -7,8 +7,13 @@ class studentengegevens:
         self.vak1 = vak1
         self.vak2 = vak2
         self.vak3 = vak3
-        self.vak4 = vak6
+        self.vak4 = vak4
         self.vak5 = vak5
+
+class lokaalgegevens:
+    def __init__(self, naam, max_capaciteit):
+        self.naam = naam
+        self.max_capaciteit = max_capaciteit
 
 class vakgegevens:
 
@@ -25,7 +30,7 @@ class vakgegevens:
 
 f = open('studentenenvakken.csv', 'r')
 
-student = []
+studenten = []
 
 for line in f:
     line = line.split(',')
@@ -38,9 +43,9 @@ for line in f:
     vak4 = line[6]
     vak5 = line[7]
     students = studentengegevens(achternaam, naam, studentennummer, vak1, vak2, vak3, vak4, vak5)
-    student.append(students)
+    studenten.append(students)
 
-print(student[5].achternaam)
+print(studenten[0].achternaam)
 
 # vakken scrapen
 
@@ -59,4 +64,19 @@ for line in d:
     vakkeh = vakgegevens(vak, hoorcolleges, werkcolleges, max_werkcolleges, practica, max_practica)
     vakken.append(vakkeh)
 
-print(vakken[3].max_werkcolleges)
+print(vakken[0].vak)
+
+# lokalen scrapen
+
+e = open('lokalen.txt', 'r')
+
+lokalen = []
+
+for line in e:
+    line = line.split('\t')
+    naam = line[0]
+    max_capaciteit = line[1]
+    lokaleh = lokaalgegevens(naam, max_capaciteit)
+    lokalen.append(lokaleh)
+
+print(lokalen[0].max_capaciteit)
