@@ -15,6 +15,27 @@ class lokaalgegevens:
         self.naam = naam
         self.max_capaciteit = max_capaciteit
 
+        self.tijd1 = False
+        self.tijd2 = False
+        self.tijd3 = False
+        self.tijd4 = False
+        self.tijd5 = False
+        self.tijd6 = False
+        self.tijd7 = False
+        self.tijd8 = False
+        self.tijd9 = False
+        self.tijd10 = False
+        self.tijd11 = False
+        self.tijd12 = False
+        self.tijd13 = False
+        self.tijd14 = False
+        self.tijd15 = False
+        self.tijd16 = False
+        self.tijd17 = False
+        self.tijd18 = False
+        self.tijd19 = False
+        self.tijd20 = False
+
 class vakgegevens:
 
     def __init__(self, vak, hoorcolleges, werkcolleges, max_werkcolleges, practica, max_practica):
@@ -79,4 +100,4 @@ for line in e:
     lokaleh = lokaalgegevens(naam, max_capaciteit)
     lokalen.append(lokaleh)
 
-print(lokalen[0].max_capaciteit)
+print(lokalen[5].tijd16)
