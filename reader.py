@@ -1,3 +1,18 @@
+def aantal_studenten(vak):
+    vak_aantal = 0
+    for i in range(len(studenten)):
+        if (studenten[i].vak1 == vak):
+            vak_aantal += 1
+        if (studenten[i].vak2 == vak):
+            vak_aantal += 1
+        if (studenten[i].vak3 == vak):
+            vak_aantal += 1
+        if (studenten[i].vak4 == vak):
+            vak_aantal += 1
+        if (studenten[i].vak5 == vak):
+            vak_aantal += 1
+    return vak_aantal
+
 class studentengegevens:
 
     def __init__(self, achternaam, naam, studentennummer, vak1, vak2, vak3, vak4, vak5):
@@ -15,36 +30,43 @@ class lokaalgegevens:
         self.naam = naam
         self.max_capaciteit = max_capaciteit
 
-        self.tijd1 = False
-        self.tijd2 = False
-        self.tijd3 = False
-        self.tijd4 = False
-        self.tijd5 = False
-        self.tijd6 = False
-        self.tijd7 = False
-        self.tijd8 = False
-        self.tijd9 = False
-        self.tijd10 = False
-        self.tijd11 = False
-        self.tijd12 = False
-        self.tijd13 = False
-        self.tijd14 = False
-        self.tijd15 = False
-        self.tijd16 = False
-        self.tijd17 = False
-        self.tijd18 = False
-        self.tijd19 = False
-        self.tijd20 = False
+        self.tijd1 = None
+        self.tijd2 = None
+        self.tijd3 = None
+        self.tijd4 = None
+        self.tijd5 = None
+        self.tijd6 = None
+        self.tijd7 = None
+        self.tijd8 = None
+        self.tijd9 = None
+        self.tijd10 = None
+        self.tijd11 = None
+        self.tijd12 = None
+        self.tijd13 = None
+        self.tijd14 = None
+        self.tijd15 = None
+        self.tijd16 = None
+        self.tijd17 = None
+        self.tijd18 = None
+        self.tijd19 = None
+        self.tijd20 = None
 
 class vakgegevens:
 
-    def __init__(self, vak, hoorcolleges, werkcolleges, max_werkcolleges, practica, max_practica):
+    def __init__(self, vak, hoorcolleges, werkcolleges, max_werkcolleges, practica, max_practica, studentenaantal):
         self.vak = vak
         self.hoorcolleges = hoorcolleges
         self.werkcolleges = werkcolleges
         self.max_werkcolleges = max_werkcolleges
         self.practica = practica
         self.max_practica = max_practica
+        self.studentenaantal = studentenaantal
+
+
+        # werkcolleges, hcs en practica indelen
+        #self.werkcollege1 =
+        #self.hoorcollege =
+        #self.werkcollege2 =
 
 
 # studenten scrapen
@@ -82,10 +104,11 @@ for line in d:
     max_werkcolleges = line[3]
     practica = line[4]
     max_practica = line[5]
-    vakkeh = vakgegevens(vak, hoorcolleges, werkcolleges, max_werkcolleges, practica, max_practica)
+    studentenaantal = aantal_studenten(vak)
+    vakkeh = vakgegevens(vak, hoorcolleges, werkcolleges, max_werkcolleges, practica, max_practica, studentenaantal)
     vakken.append(vakkeh)
 
-print(vakken[0].vak)
+print(vakken[5].studentenaantal, vakken[5].vak)
 
 # lokalen scrapen
 
