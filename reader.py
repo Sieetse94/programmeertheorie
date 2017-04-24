@@ -53,7 +53,7 @@ class lokaalgegevens:
 
 class vakgegevens:
 
-    def __init__(self, vak, hoorcolleges, werkcolleges, max_werkcolleges, practica, max_practica, studentenaantal):
+    def __init__(self, vak, hoorcolleges, werkcolleges, max_werkcolleges, practica, max_practica, studentenaantal, werkcollege):
         self.vak = vak
         self.hoorcolleges = hoorcolleges
         self.werkcolleges = werkcolleges
@@ -61,6 +61,16 @@ class vakgegevens:
         self.practica = practica
         self.max_practica = max_practica
         self.studentenaantal = studentenaantal
+        self.werkcollege = werkcollege
+        i = 1
+        while max_werkcolleges < studentenaantal:
+                self.werkcollege.append(round(studentenaantal/max_werkcolleges))
+                i += 1
+                studentenaantal -= (round(studentenaantal/max_werkcolleges))
+
+        self.werkcollege.append(studentenaantal)
+
+
 
 
         # werkcolleges, hcs en practica indelen
@@ -88,7 +98,6 @@ for line in f:
     students = studentengegevens(achternaam, naam, studentennummer, vak1, vak2, vak3, vak4, vak5)
     studenten.append(students)
 
-print(studenten[0].achternaam)
 
 # vakken scrapen
 
@@ -105,10 +114,9 @@ for line in d:
     practica = line[4]
     max_practica = line[5]
     studentenaantal = aantal_studenten(vak)
-    vakkeh = vakgegevens(vak, hoorcolleges, werkcolleges, max_werkcolleges, practica, max_practica, studentenaantal)
+    werkcollege = []
+    vakkeh = vakgegevens(vak, hoorcolleges, werkcolleges, max_werkcolleges, practica, max_practica, studentenaantal, werkcollege)
     vakken.append(vakkeh)
-
-print(vakken[5].studentenaantal, vakken[5].vak)
 
 # lokalen scrapen
 
@@ -123,4 +131,19 @@ for line in e:
     lokaleh = lokaalgegevens(naam, max_capaciteit)
     lokalen.append(lokaleh)
 
-print(lokalen[5].tijd16)
+
+i =0
+
+for zaal in vakken:
+    print(i)
+    i += 1
+
+lijstRandom2 = []
+
+j = 0
+
+for j in range(29):
+    lijstRandom2.append(j)
+
+print(lijstRandom2)
+print(len(lokalen))
