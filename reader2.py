@@ -51,8 +51,22 @@ class vakgegevens:
         self.max_practica = max_practica
         self.aantal_practica = aantal_practica
         self.studentenaantal = studentenaantal
-        self.werkcollege_lijst = []
-        self.practica_lijst = []
+
+        self.hc1 = None
+        self.hc2 = None
+        self.hc3 = None
+
+        self.wc1 = None
+        self.wc2 = None
+        self.wc3 = None
+        self.wc4 = None
+
+        self.p1 = None
+        self.p2 = None
+        self.p3 = None
+        self.p4 = None
+        self.p5 = None
+        self.p6 = None
 
 def aantal_studenten(vak):
     vak_aantal = 0
@@ -97,25 +111,41 @@ def aantal_practica(vak):
             practica += 1
         return practica 
 
+def add_hoorcollege(vak):
+    aantal = vakken[vak].hoorcolleges
+    if (aantal >= 1):
+        vakken[vak].hc1 = vakken[vak].vak + ": hoorcollege1"
+    if (aantal >= 2):
+        vakken[vak].hc2 = vakken[vak].vak + ": hoorcollege2"
+    if (aantal == 3):
+        vakken[vak].hc3 = vakken[vak].vak + ": hoorcollege3"
+
 def add_werkcollege(vak):
-    if vakken[vak].aantal_werkcolleges == None:
-        return
-    else: 
-        lijst = []
-        for j in range(int(vakken[vak].aantal_werkcolleges)):
-            wc = "1." + str(j + 1)
-            lijst.append(wc)
-        return lijst   
-                    
+    aantal = vakken[vak].aantal_werkcolleges
+    if (aantal >= 1):
+        vakken[vak].wc1 = vakken[vak].vak + ": werkcollege1"
+    if (aantal >= 2):
+        vakken[vak].wc2 = vakken[vak].vak + ": werkcollege2"
+    if (aantal >= 3):
+        vakken[vak].wc3 = vakken[vak].vak + ": werkcollege3"
+    if (aantal == 3):
+        vakken[vak].wc4 = vakken[vak].vak + ": werkcollege4"
+
 def add_practica(vak):
-    if vakken[vak].aantal_practica == None:
-        return
-    else: 
-        lijst = []
-        for j in range(int(vakken[vak].aantal_practica)):
-            wc = "1." + str(j + 1)
-            lijst.append(wc)
-        return lijst   
+    aantal = vakken[vak].aantal_practica
+    if (aantal >= 1):
+        vakken[vak].p1 = vakken[vak].vak + ": practica1"
+    if (aantal >= 2):
+        vakken[vak].p2 = vakken[vak].vak + ": practica2"
+    if (aantal >= 3):
+        vakken[vak].p3 = vakken[vak].vak + ": practica3"
+    if (aantal >= 4):
+        vakken[vak].p4 = vakken[vak].vak + ": practica4"
+    if (aantal >= 5):
+        vakken[vak].p5 = vakken[vak].vak + ": practica5"
+    if (aantal == 6):
+        vakken[vak].p6 = vakken[vak].vak + ": practica6"
+
 
 # studenten scrapen
 f = open('studentenenvakken.csv', 'r')
@@ -168,114 +198,6 @@ for line in e:
 for vak in range(len(vakken)):
     vakken[vak].aantal_werkcolleges = aantal_werkcolleges(vak)
     vakken[vak].aantal_practica = aantal_practica(vak)
-    vakken[vak].werkcollege_lijst.append(add_werkcollege(vak))
-    vakken[vak].practica_lijst.append(add_practica(vak))
-
-
- 
-
-# For zaal met de grootste capaciteit
-# We moeten ervoor zorgen dat wij de zalen van groot naar klein in de classes indelen
-
-for i in range(len(zalen)):
-
-    # Hier moeten wij ervoor zorgen dat we 1 voor 1 de zalen van zalen[i] afgaan
-    # Dit doen wij door de HCs, WCs en practica in te delen
-
-    for j in range(len(vakken)):
-        if (zalen[i].tijd1 != None):
-            zalen[i].tijd1 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd2 != None):
-            zalen[i].tijd2 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd3 != None):
-            zalen[i].tijd3 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd4 != None):
-            zalen[i].tijd4 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd5 != None):
-            zalen[i].tijd5 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd6 != None):
-            zalen[i].tijd6 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd7 != None):
-            zalen[i].tijd7 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd8 != None):
-            zalen[i].tijd8 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd9 != None):
-            zalen[i].tijd9 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd10 != None):
-            zalen[i].tijd10 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd11 != None):
-            zalen[i].tijd11 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd12 != None):
-            zalen[i].tijd12 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd13 != None):
-            zalen[i].tijd13 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd14 != None):
-            zalen[i].tijd14 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd15 != None):
-            zalen[i].tijd15 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd16 != None):
-            zalen[i].tijd16 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd17 != None):
-            zalen[i].tijd17 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd18 != None):
-            zalen[i].tijd18 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-        if (zalen[i].tijd19 != None):
-            zalen[i].tijd19 = vakken[j].vaknaam
-            vakken[j].hoorcollege1 = zalen[i].zaalnaam
-            j += 1
-
-
-    # Hier moet een functie komen die dit vervangt, uiteindelijk is het de bedoeling
-    # dat de loop eerst alle tijden afgaat van een zaal totdat alle tijdslotten
-    # bezet zijn.
-    # Dan deel je eerst alle hoorcolleges1 in, daarna de hoorcolleges2, daarna werkcolleges enz.
-    # Het moet uiteindelijk zo'n vorm hebben deelIn(input) *weet nog niet precies hoe maar komt goed
-    #
-# Om het uiteindelijk uit te printen, kunnen we voor nu zoiets gebruiken:
-
-for i in range(len(vakken)):
-    print(vakken[i].naam)
-    print(printSchedule(vakken[i])
-
-
-def printSchedule(vak):
-    timeSchedule = []
-    timeSchedule.append(self.tijd1, self.tijd2, ENZOVOORT)
-    return timeSchedule
-
+    add_hoorcollege(vak)
+    add_werkcollege(vak)
+    add_practica(vak)
