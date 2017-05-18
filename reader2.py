@@ -97,7 +97,6 @@ def aantal_werkcolleges(vak):
             werkcolleges += 1
         return werkcolleges
    
-
 # practica uitrekenen
 def aantal_practica(vak):  
     if vakken[vak].max_practica.rstrip('\n') == 'nvt':
@@ -112,39 +111,42 @@ def aantal_practica(vak):
         return practica 
 
 def add_hoorcollege(vak):
-    aantal = vakken[vak].hoorcolleges
-    if (aantal >= 1):
-        vakken[vak].hc1 = vakken[vak].vak + ": hoorcollege1"
-    if (aantal >= 2):
-        vakken[vak].hc2 = vakken[vak].vak + ": hoorcollege2"
-    if (aantal == 3):
-        vakken[vak].hc3 = vakken[vak].vak + ": hoorcollege3"
+    if vakken[vak].hoorcolleges != None: 
+        aantal = int(vakken[vak].hoorcolleges)
+        if (aantal >= 1):
+            vakken[vak].hc1 = vakken[vak].vak + ": hoorcollege1"
+        if (aantal >= 2):
+            vakken[vak].hc2 = vakken[vak].vak + ": hoorcollege2"
+        if (aantal >= 3):
+            vakken[vak].hc3 = vakken[vak].vak + ": hoorcollege3"
 
 def add_werkcollege(vak):
-    aantal = vakken[vak].aantal_werkcolleges
-    if (aantal >= 1):
-        vakken[vak].wc1 = vakken[vak].vak + ": werkcollege1"
-    if (aantal >= 2):
-        vakken[vak].wc2 = vakken[vak].vak + ": werkcollege2"
-    if (aantal >= 3):
-        vakken[vak].wc3 = vakken[vak].vak + ": werkcollege3"
-    if (aantal == 3):
-        vakken[vak].wc4 = vakken[vak].vak + ": werkcollege4"
+    if vakken[vak].aantal_werkcolleges != None:
+        aantal = int(vakken[vak].aantal_werkcolleges) 
+        if (aantal >= 1):
+            vakken[vak].wc1 = vakken[vak].vak + ": werkcollege1"
+        if (aantal >= 2):
+            vakken[vak].wc2 = vakken[vak].vak + ": werkcollege2"
+        if (aantal >= 3):
+            vakken[vak].wc3 = vakken[vak].vak + ": werkcollege3"
+        if (aantal == 4):
+            vakken[vak].wc4 = vakken[vak].vak + ": werkcollege4"
 
 def add_practica(vak):
-    aantal = vakken[vak].aantal_practica
-    if (aantal >= 1):
-        vakken[vak].p1 = vakken[vak].vak + ": practica1"
-    if (aantal >= 2):
-        vakken[vak].p2 = vakken[vak].vak + ": practica2"
-    if (aantal >= 3):
-        vakken[vak].p3 = vakken[vak].vak + ": practica3"
-    if (aantal >= 4):
-        vakken[vak].p4 = vakken[vak].vak + ": practica4"
-    if (aantal >= 5):
-        vakken[vak].p5 = vakken[vak].vak + ": practica5"
-    if (aantal == 6):
-        vakken[vak].p6 = vakken[vak].vak + ": practica6"
+    if vakken[vak].aantal_practica != None:
+        aantal = int(vakken[vak].aantal_practica)
+        if (aantal >= 1):
+            vakken[vak].p1 = vakken[vak].vak + ": practica1"
+        if (aantal >= 2):
+            vakken[vak].p2 = vakken[vak].vak + ": practica2"
+        if (aantal >= 3):
+            vakken[vak].p3 = vakken[vak].vak + ": practica3"
+        if (aantal >= 4):
+            vakken[vak].p4 = vakken[vak].vak + ": practica4"
+        if (aantal >= 5):
+            vakken[vak].p5 = vakken[vak].vak + ": practica5"
+        if (aantal == 6):
+            vakken[vak].p6 = vakken[vak].vak + ": practica6"
 
 
 # studenten scrapen
@@ -201,3 +203,12 @@ for vak in range(len(vakken)):
     add_hoorcollege(vak)
     add_werkcollege(vak)
     add_practica(vak)
+
+for vak in range(len(vakken)):
+    print vakken[vak].aantal_practica
+    print vakken[vak].p1
+    print vakken[vak].p2
+    print vakken[vak].p3
+    print vakken[vak].p4
+    print vakken[vak].p5
+    print vakken[vak].p6
